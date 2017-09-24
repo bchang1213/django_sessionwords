@@ -1,0 +1,28 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+div.container{
+	width: 1000px;
+}
+
+label{
+	display: block;
+}
+
+div.left{
+	border: 2px solid black;
+	height: 200px;
+	width: 300px;
+}
+
+div.right, div.left{
+	display: inline-block;
+	vertical-align: top;
+}
+
+div.right{
+	height: 200px;
+	width: 300px;
+}
