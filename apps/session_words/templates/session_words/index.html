@@ -14,7 +14,7 @@
 			<h1>Add a New Word</h1>
 			<form action="/add" method="post">
 				{% csrf_token %}
-				<input type="text" name="word">
+				<input type="text" name="content">
 				<p>Choose a color:</p>
 				<label>Red<input type="radio" name="color" value="red"></label>
 				<label>Green<input type="radio" name="color" value="green"></label>
@@ -24,8 +24,15 @@
 			</form>	
 		</div>
 		<div class="right">
-			<form><input type="submit" name="clearsession" value="Clear Session"></form>
-			<p>{{ request.session.word }}</p>
+			<form action='/clear' method="post">
+				{% csrf_token %}
+				<input type="submit" name="clearsession" value="Clear Session">
+			</form>
+		{% if request.session.words %}
+			{% for word in request.session.words %}
+			<p><span style="color:{{ word.color }}" class="{{ word.bigfont }}">{{ word.content }}</span></p>
+			{% endfor %}
+			{% endif %}
 		</div>
 
 	</div>
